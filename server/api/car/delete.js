@@ -8,9 +8,7 @@ export default defineEventHandler(async (event) => {
 			"token"
 		)}`;
 	}
-	const res = await Axios.delete(`${url}/${id}`, {
-		headers,
-	});
+	const res = await Axios.delete(`${url}/${id}`, { headers });
 	if (res.status === 204) {
 		return true;
 	}

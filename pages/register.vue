@@ -84,11 +84,11 @@ export default {
                     age: this.user.age,
                     dob: this.user.dob
                 }
-                const { registered: user, error } = await useRegisterUser(newUser);
+                const { registered, error } = await useRegisterUser(newUser);
                 if (error.value) {
                     return alert("Error code: " + error.value.statusCode + " - " + error.value.statusMessage)
                 }
-                if (user) {
+                if (registered) {
                     this.isLoggedIn = true;
                     localStorage.setItem("isLoggedIn", true);
                     localStorage.setItem("token", `ThisIsRandomKey`);

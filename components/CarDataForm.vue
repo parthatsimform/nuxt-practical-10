@@ -62,21 +62,21 @@ export default {
                     price: this.car.price,
                 }
                 if (this.title == "Add Car") {
-                    const { added: status, error } = await useAddCar(carData)
+                    const { added, error } = await useAddCar(carData)
                     if (error.value) {
                         return alert("Error code: " + error.value.statusCode + " - " + error.value.statusMessage)
                     }
-                    if (status) {
+                    if (added) {
                         this.showUpdatedCars()
                     }
                 }
                 if (this.title == "Edit Car") {
                     carData.id = this.car.id;
-                    const { edited: status, error } = await useEditCar(carData)
+                    const { edited, error } = await useEditCar(carData)
                     if (error.value) {
                         return alert("Error code: " + error.value.statusCode + " - " + error.value.statusMessage)
                     }
-                    if (status) {
+                    if (edited) {
                         this.showUpdatedCars()
                     }
                 }

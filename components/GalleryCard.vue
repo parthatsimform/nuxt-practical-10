@@ -45,8 +45,11 @@ const props = defineProps(["car"])
 
 const removeCar = async (car) => {
     if (confirm("Are you sure you want to delete " + car.name + "?")) {
-        const status = await useDeleteCar(car.id);
-        if (status) {
+        const { deleted, error } = await useDeleteCar(car.id);
+        if (error.value) {
+            return alert("Error code: " + error.value.statusCode + " - " + error.value.statusMessage)
+        }
+        if (deleted) {
             const { data, error } = await useFetchCars();
             if (error.value) {
                 throw createError(error);
