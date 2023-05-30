@@ -155,11 +155,16 @@ body::before {
 
 #carComponent {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(auto-fill, 300px);
     gap: 1%;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+}
+
+#carComponent>div {
+    display: flex;
+    justify-content: center;
 }
 
 .language {
